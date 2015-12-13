@@ -1,7 +1,6 @@
 <?php
 
 $debug = true;
-
 if ($debug) {
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL);
@@ -12,7 +11,7 @@ if ($debug) {
 }
 
 // System constants
-define("CLASS_ROOT", $_SERVER['DOCUMENT_ROOT'] . "../app/");
+define("CLASS_ROOT", $_SERVER['DOCUMENT_ROOT'] . "/../app/");
 
 // Register the default autoloader
 spl_autoload_register("primary_autoloader");
@@ -31,6 +30,7 @@ function primary_autoloader($class) {
     }
 
     if (file_exists($file_name)) {
+
         require_once $file_name;
     }
 }
