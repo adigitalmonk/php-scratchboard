@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Provisioning App."
+echo "--------------------"
+echo "- Provisioning App -"
+echo "--------------------"
 
 echo "... Updating APT"
     apt-get update -qq
@@ -16,3 +18,9 @@ echo "... PHP5 PPA"
         add-apt-repository -y ppa:ondrej/php5
         apt-get update -qq
     fi
+
+echo "... PHP"
+    apt-get install -qq php5 php5-xdebug phpunit
+
+echo "... Restarting services"
+    service apache2 restart

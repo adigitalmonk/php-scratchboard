@@ -1,5 +1,16 @@
 <?php
 
+$debug = true;
+
+if ($debug) {
+	ini_set('display_errors', 1);
+	error_reporting(E_ALL);
+	ini_set('xdebug.default_enable', 1);
+	ini_set('xdebug.force_display_errors', 1);
+	ini_set('xdebug.force_error_reporting', 1);
+	xdebug_enable();
+}
+
 // System constants
 define("CLASS_ROOT", $_SERVER['DOCUMENT_ROOT'] . "../app/");
 
