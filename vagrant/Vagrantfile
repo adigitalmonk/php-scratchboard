@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+    # Define VM box to use
+    config.vm.box = "precise64"
+    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+    
+    # Configure the application server
+    config.vm.define "app" do |app|
+        app.vm.host_name = "app"
+        app.vm.network :private_network, ip: "10.10.2.20", netmask: "255.255.255.0", adapter: 2
+
+        # Set share folder
+        app.vm.synced_folder "../root" , "/var/www/"
+        app.vm.synced_folder "../apache/" , "/etc/apache2/sites-enabled/"
+
+        config.vm.provision :shell, :path => "provision/app.sh", :run => "always"
+    end
+end
