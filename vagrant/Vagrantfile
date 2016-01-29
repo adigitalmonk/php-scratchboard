@@ -9,9 +9,8 @@ Vagrant.configure("2") do |config|
         app.vm.host_name = "app"
         app.vm.network :private_network, ip: "10.10.2.20", netmask: "255.255.255.0", adapter: 2
 
-        # Set share folder
+        # Add the root folder
         app.vm.synced_folder "../root" , "/var/www/"
-        #app.vm.synced_folder "../apache/" , "/etc/apache2/sites-enabled/"
 
         config.vm.provision :shell, :path => "provision/app.sh", :run => "always"
     end
