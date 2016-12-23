@@ -1,2 +1,2 @@
 
-include base, apache, php
+include base, nginx, php
