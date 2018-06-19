@@ -34,7 +34,7 @@ class php {
 
     # Composer!
     exec {'add-php-composer':
-        command => '/usr/bin/curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/bin --filename=composer',
+        command => '/usr/bin/curl -sS https://getcomposer.org/installer | sudo /usr/bin/php -- --install-dir=/usr/bin --filename=composer',
         unless => '/usr/bin/find /usr/bin/composer',
         require => Package['curl', 'php7.0-cli'];
     }
